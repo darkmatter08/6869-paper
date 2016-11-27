@@ -54,26 +54,28 @@ First line of institution2 address\\
 
 %%%%%%%%% BODY TEXT
 \section{Introduction}
-Convolutional neural networks (CNN) have been shown to provide state of the art performance in various computer vision tasks.  For applications ranging from object detect \cite{}, segmentation \cite{}, text recognition \cite{}, and more they have proven to be a staple in the computer vision community. Their success can be partially attributed to the networks ability to learn invariants in the high dimensional space \cite{}. Despite the successes of CNNs, they suffer from acting like a black box. Without a firm understanding of what the CNN is doing, it becomes hard to improve and optimize network topologies and techniques without trial and error. To tackle these problems, work has been done to visualize what is happening inside of the network. Despite insightful visualizations, some aspects of the network operate on modalities that cannot be directly visualized. In particular, transformations such as scaling, rotation, and translation have not been visualized in networks. 
+Convolutional neural networks (CNN) have been shown to provide state of the art performance in various computer vision tasks.  For applications ranging from object detect \cite{}, segmentation \cite{}, text recognition \cite{}, and more they have proven to be a staple in the computer vision community. Their success can be partially attributed to the networks ability to learn invariants in the high dimensional space \cite{}. Despite the successes of CNNs, they suffer from acting like a black box. Without a firm understanding of what the CNN is doing, it becomes hard to improve and optimize network typologies and techniques without trial and error. To tackle these problems, work has been done to visualize what is happening inside of the network. Despite insightful visualizations, some aspects of the network operate on modalities that cannot be directly visualized. In particular, transformations such as scaling, rotation, and translation have not been visualized in networks. We propose a method akin to how a neurologist would map out the brain by mapping out regions of activity what performing specific tasks.\cite{} By applying this technique to neural nets we can effectively map out the network.
 
-Why understanding CNNs is important
-Why understanding CNNS is hard
-Why we approach transformation units
-How we approach the problem
+One of the reasons CNNs have recently become popular is because we now possess the computational power to solve these large problems. Despite these advances, training and testing neural networks is a timely and expensive task compared traditional software development. We propose a method to optimize running and training CNNs in certain contexts using our visualization tool. More specifically, If a general network is trained to capture many variables (like translation and rotation), we can prune this network while maintaining accuracy if we know one of the variables is fixed. This would decrease the amount of computations necessary  at run time. In addition, the programmer can train the network once, then extract various specialized networks for more specific tasks.
 
+We experimentally demonstrate the our visualization technique for transformations by using a network trained to read text in the wild. With the visualizations we show that it is possible to reduce the network size while retaining accuracy if transformation assumptions are made on the text.
 
 \subsection{Main Contributions}
 
-List of contributions
--Isolate units
--Drop units and maintain accuracy
--Manipulate network without retraining
+\begin{enumerate}
+\item A visualization technique to determine activity in a network.
+
+\item A method of reducing network complexity while retaining accuracy when assumptions on the data can be made.
+
+\item An efficient system to create multiple specialized networks out a larger pretrained network.
+
+\item A demonstration of detecting an removing transformation specific units in a network.
+\end{enumerate}
 
 \subsection{Main Limitations}
+Our visualization technique can be useful for visualizing the network if the units of interest exist in the convolutional layers. If instead they exist in the fully connected layers, not much useful information can be extracted. In addition it is difficult to apply isolated pruning without effecting the entire network.
 
-?Maybe don't need
-
-Our analysis is specific to one network
+Another limitation is that pruning the networks graphs may not have a computational boost on hardware that are designed to work with large amount of vectors in parallel, such as GPUs. However, as machine learning becomes more prevalent, applications that utilize lower powered simpler devices will increase and benefit from the computation reduction.
 
 \section{Related Work}
 
