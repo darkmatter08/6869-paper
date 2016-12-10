@@ -62,15 +62,12 @@ Further, we believe that keeping in sync with the idea that a network involves c
 Identifying sub-networks can prove to be extremely useful at different steps in CNN training and deployment. It can help decide leaner network architecture depending upon known invariants in the training dataset, and prune existing networks without reducing accuracy over certain datasets. Furthermore, it can, in principle, facilitate a plug-and-play use of sub-networks for transfer learning to new domains akin to the fine-tuning approach which is gaining popularity in the computer vision community. \cite{}
 
 \subsection{Main Contributions}
-
+Our contributions are three-fold:
 \begin{enumerate}
-\item A visualization technique to determine activity in a network.
+\item We Extend standard visualization techniques to a new domain - a state of the art text recognition network.
 
-\item A method of reducing network complexity while retaining accuracy when assumptions on the data can be made.
-
-\item An efficient system to create multiple specialized networks out a larger pretrained network.
-
-\item A demonstration of detecting an removing transformation specific units in a network.
+\item Furthermore, we propose visualization techniques which help identify sub-networks preferentially activated by a certain kind of input images, or instead, lead to the discriminative network predicting a certain output class. This extends the existing capabilities of network visualization techniques from per-unit analysis to analyzing a meaningful chunk of nodes at a time. 
+\item \color{red} Finally, we explore the benefits that sub-network identification makes possible, including a demonstration of detecting an removing transformation specific units in a network.
 \end{enumerate}
 
 \subsection{Main Limitations}
