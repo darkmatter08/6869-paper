@@ -102,7 +102,7 @@ To generate these datasets a modified version of SynthText \cite{} was used. Thi
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{Figures/synthtext_outputs/synthext_outputs.png}
-\caption{Generated text with constraints applied. || elaborate ||}
+\caption{Example of generated text from a sample of four different text constraints. The ability to create large test sets with different constraints allows us to compare differences in network activations.}
 \label{fig:genText}
 \end{figure}
 
@@ -133,7 +133,7 @@ describer possible uses of this information (here or somewhere else?)||
 
 \begin{figure*}
 \includegraphics[width=1\textwidth]{Figures/activations_map_overview/act_map_overview-01.png}
-\caption{figure showning how histogram is created ||write description||}
+\caption{Illustration describing how the activation maps are created. First ~1000 text images are fed through the network. The activation outputs are recorded for each layer. Each individual filter activation is averaged. These averaged activation are then averaged over all of the source images and plotted on a 2D grid. Since the number of filters per layer varies, we give additional columns to layers with more filters (For example layer 8 has 4 columns). This is done to compact the visualization. Information about the choice of layers can be found in the supplement.}
 \label{fig:subvis}
 \end{figure*}
 
