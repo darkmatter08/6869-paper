@@ -118,11 +118,11 @@ How we choose what and when to drop neurons
 
 \subsection{Visualizing filter activations}
 
-\subsection{Network architecture invariants - Top Weights Method}
+\subsection{Network architecture invariants - Top Activations Method}
 
 \subsection{Location encoding in networks - Patch Method}
 
-\subsection{Subnetwork Identification from Activations} \label{sec:subnetwork}
+\subsection{Activation Signature through difference maps} \label{sec:subnetwork}
 We propose a method to isolate subnetworks by using activations. Similar to how a neurologist would map the brain, we probe the network with different datasets and observe how the network reacts. Our method focuses on the amount of activation at each node. As an example assume we are interested in finding a subnetwork associacted with specific transformation. First two specialized synthetic datasets are generated as described in section \ref{sec:synthtext}. In this case one dataset does not have the transformation and the other does. The datasets are fed through the network and the activations are recorded and visualized. To visualize the activations, each filter output is \textcolor{red}{averaged}. Each of these resulting values are \textcolor{red}{averaged} over all of the test inputs. Finally the resulting values are mapped on a 2d plane as shown in Fig. \ref{fig:subvis}. \textcolor{red}{In practice we found that visualizing after RELU operations was beneficial as the dropped negative values provided little value.} Two maps are created, $V_0$ and $V_1$, for the dataset with and without the transformations. Comparisons between $V_0$ and $V_1$ can be used to get and idea of how the network reacts differently. With experimentation we found the following metric the most valuable for visualizations: \textcolor{red}{$$\frac{|V_0-V_1|}{V_0}$$}
 
 This method attempts to visualize the structure of the network rather than node specific operations as is typically done. The structure view provides and abstraction that is useful with discussing operations that are difficult or unnecessary to visualize. For example, it is difficult and uninformative to visualize transformations (rotation, scale, translation, etc). However understanding which parts of the network are active during different transformations can be informative.
@@ -171,7 +171,7 @@ Talk about why this pruning process may be useful to improve run times on mobile
 
 %-------------------------------------------------------------------------
 \subsection{Conclusion}
-
+Traditional per-unit visualization tools like the Deepviz toolbox \cite{} show that the text detection network operates similar to an object or scene detector. To get a more zoomed out perspective of the information flow, we proposed two new general purpose techniques for identifying highly activated sub-networks. The Top Activations method attemps to capture the essence of the chained convolutions which make neural networks so successful. The Activation Signature method visualizes the differences in activations corresponding certain input transformations. This helps identify an activation signature for each transformation. These subnetwork identification methods may prove to be useful in debugging and optimizing network architectures as they may help map high level features of the image to regions in the network. Future work includes continuing searching for examplar subnetworks corresponding to particular high level tasks.
 
 %------------------------------------------------------------------------
 
