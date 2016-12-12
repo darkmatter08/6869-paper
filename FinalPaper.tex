@@ -53,7 +53,7 @@ First line of institution3 address\\
 
 %%%%%%%%% ABSTRACT
 \begin{abstract}
-   Deep convolutional neural networks have recently demonstrated great success in computer vision problems. While there have been several efforts to understand how how these networks work, we are still far from truth. Moreover, most of the expoloratory work done has been in the domain of understanding object and scene detectors. Our motivation here is two fold - expanding the domain of standard network visualization techniques to the domain of text recognition, and most importantly, suggesting new general purpose visualization pipelines which rely on identifying subnetworks which may be performing a high level function, as opposed to the standard per unit visualization. Such subnetwork identification methods may even be useful in reducing network complexity when invariants of the system are known, and in facilitating transfer learning across different domains of computer vision. 
+   Deep convolutional neural networks have recently demonstrated great success in computer vision problems. While there have been several efforts to understand how these networks work, we are still far from truth. Moreover, most of the expoloratory work done has been in the domain of understanding object and scene detectors. Our motivation here is two fold - expanding the domain of standard network visualization techniques to the domain of text recognition, and most importantly, suggesting new general purpose visualization pipelines which rely on identifying subnetworks which may be performing a high level function, as opposed to the standard per unit visualization. Such subnetwork identification methods may even be useful in reducing network complexity when invariants of the system are known, and in facilitating transfer learning across different domains of computer vision. 
 \end{abstract}
 
 %%%%%%%%% BODY TEXT
@@ -62,17 +62,18 @@ Convolutional neural networks have unprecedented success in various computer vis
 
 Despite their successes, CNNs still are not much more than high performing black boxes, with limited understanding about what they have learned, and how they handle different kinds of input. Without a firm understanding of what the CNN is doing, it becomes hard to improve and optimize network typologies and techniques without trial and error. While there are a number of papers working on visualizing the internal representation of hidden layers, most of them have focussed on per-unit visualizations \cite{yosinski2015understanding,mahendran2015understanding,zhou2014object}.Moreover, most of this work has been done in the domain of object/scene detection. We take this one step further by extending these existing techniques to the domain of text recognition, which has seen significant success with CNN's \cite{Jaderberg14,Jaderberg14c,Jaderberg14d}. As text is inherently synthetic data, and because we work with a synthetic dataset, it gives us the power to address aspects which may be missing in object/scene datasets. In particular, transformations such as scaling, rotation, and translation have not been visualized in networks before. 
 
-Further, we believe that keeping in sync with the idea that a network involves computations chained together it makes more sense to visualize a chain of operations as opposed to a single node. To address this, our work attempts to  explore different visualization techniques which aim to identify a sub-network, or a path of information flow in the network which may be related closely with either (i) A particular kind of input image, or (ii) A particular kind of output class. We propose a method akin to how a neurologist would use functional magnetic resonance imaging to map out the brain by mapping out regions of activity while performing specific tasks.\cite{friston1998event} We experimentally demonstrate the our visualization techniques for transformations by using a network trained to read text in the wild. 
+Further, we believe that as opposed to the per-unit visualizations that are popular in literature these days, it might be helpful to visualize substructures in the network which contribute to learning a high level feature. To address this, our work explores different visualization techniques which aim to identify a sub-network, or a path of information flow in the network which may be related closely with either (i) A particular kind of input image, or (ii) A particular kind of output class. We propose a method akin to how a neurologist would use functional magnetic resonance imaging to map out the brain by mapping out regions of activity while performing specific tasks.\cite{friston1998event} We experimentally demonstrate the our visualization techniques for transformations by using a network trained to read text in the wild. 
 
-Identifying sub-networks can prove to be extremely useful at different steps in CNN training and deployment. It can help decide leaner network architecture depending upon known invariants in the training dataset, and prune existing networks without reducing accuracy over certain datasets. Furthermore, it can, in principle, facilitate a plug-and-play use of sub-networks for transfer learning to new domains akin to the fine-tuning approach which is gaining popularity in the computer vision community. \cite{}
+The motivation behind mapping substructures to the high level features stems from both a scientific and applied standpoint. Such maps could help unravel black-box like CNN's to understand their functinality, and may even help optimize network design and training.
 
 \subsection{Main Contributions}
 Our contributions are three-fold:
 \begin{enumerate}
 \item We Extend standard visualization techniques to a new domain - a state of the art text recognition network.
 
-\item Furthermore, we propose visualization techniques which help identify sub-networks preferentially activated by a certain kind of input images, or instead, lead to the discriminative network predicting a certain output class. This extends the existing capabilities of network visualization techniques from per-unit analysis to analyzing a meaningful chunk of nodes at a time. 
-\item \color{red} Finally, we explore the benefits that sub-network identification makes possible, including a demonstration of detecting an removing transformation specific units in a network.
+\item Furthermore, we propose visualization techniques which help identify sub-networks preferentially activated by a certain kind of input images.
+
+\item Further, we demonstrated our proposed visualization techniques in the context of text recognition
 \end{enumerate}
 
 \subsection{Main Limitations}
@@ -154,6 +155,7 @@ Title is the conclusion from our results basically
 
 %-------------------------------------------------------------------------
 \section{Discussion}
+Identifying sub-networks can prove to be extremely useful at different steps in CNN training and deployment. It can help decide leaner network architecture depending upon known invariants in the training dataset, and prune existing networks without reducing accuracy over certain datasets. Furthermore, it can, in principle, facilitate a plug-and-play use of sub-networks for transfer learning to new domains akin to the fine-tuning approach which is gaining popularity in the computer vision community.
 
 \subsection{Inferences from results - dump}
 Talk about why this helps us understand what Deep CNNs are doing
