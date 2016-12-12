@@ -195,7 +195,7 @@ This method attempts to visualize the structure of the network rather than node 
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{Figures/activation_vis/activation_vis-01.png}
-\caption{\textcolor{red}{Need reference and description}}
+\caption{Visualizing activations of different filters}
 \label{fig:deepvis}
 \end{figure}
 
@@ -206,7 +206,7 @@ This method attempts to visualize the structure of the network rather than node 
 \end{figure}
 
 \subsection{Standard Visualization Techniques}
-To better understand the functioning of the text detector, we ported it over to Caffe from Matconvnet, and then used a toolkit provided by \cite{yosinski2015understanding} to visualize the filers and their activations for different kinds of input images. Also, we visualized the activations ourselves in MATLAB and eyeballed ther results to make sense of how the network works.
+To better understand the functioning of the text detector, we ported it over to Caffe from Matconvnet, and then used a toolkit provided by \cite{yosinski2015understanding} to visualize the filers and their activations for different kinds of input images. Also, we visualized the activations ourselves in MATLAB and eyeballed ther results to make sense of how the network works, as shown in Fig. \ref{fig:deepvis}
 
 We found that we can trace the process of text recognition through the layers, breaking it down into high level tasks. Initial layers of the network roughly identified the horizontal and vertical edges in the words. As we move further, the word is no longer visible, but filter activations are localized in groups of high density. This was intriguing, and is one of the problems we will be following up in our future work. As we moved towards the end of the network, activations became more sparse and less localized. Activation maps contained 3-4 very high activations, and the rest were usually very low. This prompted us to use a metric other than maximum to compare different activation maps, and we moved to a frobenius norm as explained earlier. 
 
