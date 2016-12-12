@@ -80,24 +80,24 @@ Despite their successes, CNNs are largely black boxes, with limited understandin
 Further, we believe that as opposed to the per-unit visualizations that are popular in literature these days, it might be helpful to visualize substructures in the network which contribute to learning a high level feature. To address this, our work explores different visualization techniques which aim to identify a sub-network, or a path of information flow in the network which may be related closely with either (i) A particular kind of input image, or (ii) A particular kind of output class. We propose a method akin to how a neurologist would use functional magnetic resonance imaging to map out the brain by mapping out regions of activity while performing specific tasks \cite{friston1998event}. We experimentally demonstrate the our visualization techniques for transformations by using a network trained to read text in the wild.
 
 
-The motivation behind mapping substructures to the high level features stems from both a scientific and applied standpoint. Such maps could help unravel black-box like CNN's to understand their functionality, and may even help optimize network design and training.
+The motivation behind mapping substructures to the high level features stems from both a scientific and applied standpoint. Such maps could help unravel black-box like CNNs to understand their functionality, and may even help optimize network design and training.
 
 
 \subsection{Main Contributions}
 Our contributions are three-fold:
 \begin{enumerate}
-\item We Extend standard visualization techniques to a new domain - a state of the art text recognition network.
+\item We extend standard visualization techniques to a new domain - a state of the art text recognition network.
 
 
-\item Furthermore, we propose visualization techniques which help identify sub-networks preferentially activated by a certain kind of input images.
+\item We propose visualization techniques which help identify sub-networks preferentially activated by a certain kind of input images.
 
 
-\item Further, we demonstrated our proposed visualization techniques in the context of text recognition
+\item We demonstrated our proposed visualization techniques in the context of text recognition.
 \end{enumerate}
 
 
 \subsection{Main Limitations}
-Our visualization technique can be useful for visualizing the network if the units of interest exist in the convolutional layers. If instead they exist in the fully connected layers, not much useful information can be extracted. In addition it is difficult to apply isolated pruning without affecting the entire network.
+Our techniques can be useful for visualizing the network if the structures of interest exist in the convolutional layers. If instead they exist in the fully connected layers, not much useful information can be extracted. In addition, it is difficult to apply isolated pruning without affecting the entire network.
 
 
 Another limitation is that pruning the networks graphs may not have a computational boost on hardware that are designed to work with large amount of vectors in parallel, such as GPUs. However, as machine learning becomes more prevalent, applications that utilize lower powered simpler devices will increase and benefit from the computation reduction.
@@ -105,14 +105,14 @@ Another limitation is that pruning the networks graphs may not have a computatio
 
 \section{Related Work}
 \subsection{CNN Visualization}
-With the advent of CNN's, has been a growing interest in the both the computer vision and the deep learning community to understand the functioning of these models. Most recent works build on creating natural pre-images \cite{DBLP:journals/corr/MahendranV15} that maximally activate certain nodes of the network, or obtaining saliency maps from these networks using techniques like deconvolution \cite{DBLP:journals/corr/ZeilerF13} and
-projecting back fully connected layers. \cite{DBLP:journals/corr/SimonyanVZ13}. However, most work in this field has been limited to the domain of object and scene detectors, and use a single neuron as the basis of the visualization, identifying exemplar neurons that strongly correspond to high level features.\cite{zhou2014object,DBLP:journals/corr/GirshickDDM13,DBLP:journals/corr/MahendranV15,DBLP:journals/corr/ZeilerF13,DBLP:journals/corr/SimonyanVZ13,mahendran2015understanding}. Our work extends adaptations of many of these standard techniques \cite{yosinski2015understanding} to the domain of text recognition. Furthermore, we have proposed two new techniques that take a more zoomed out perspective to network visualization by studying the activations of several units at the same time.
+With the advent of CNNs, there has been a growing interest in the both the computer vision and the deep learning community to understand how these models work. Most recent works build on creating natural pre-images \cite{DBLP:journals/corr/MahendranV15} that maximally activate certain nodes of the network, or obtaining saliency maps from these networks using techniques like deconvolution \cite{DBLP:journals/corr/ZeilerF13} and
+projecting back fully connected layers \cite{DBLP:journals/corr/SimonyanVZ13}. However, most work in this field has been limited to the domain of object and scene detectors, and use a single neuron as the basis of the visualization, identifying exemplar neurons that strongly correspond to high level features \cite{zhou2014object,DBLP:journals/corr/GirshickDDM13,DBLP:journals/corr/MahendranV15,DBLP:journals/corr/ZeilerF13,DBLP:journals/corr/SimonyanVZ13,mahendran2015understanding}. Our work extends adaptations of many of these standard techniques \cite{yosinski2015understanding} to the domain of text recognition. Furthermore, we have proposed two new techniques that take a more 'zoomed out' perspective of network visualization by studying the activations of several units at the same time.
 
 
 \subsection{Text Recognition}
 
 
-The computer vision community has been working on the problem of recognizing text in natural scenes for long a time now\cite{1315187}. While varied approaches have been tried to these problems, the standard approach has been to split the problem in two parts - text detection and text recognition \cite{PosnerEtAl-IROS2010,Neumann:2011:TLR:2066306.2067476,Yang:2014:FIV:2583855.2583972,6751121,KaiWang:2011:EST:2355573.2356398,Weinman:2014:TIS:2574225.2574484,DBLP:journals/corr/AlsharifP13,6751207}. The advent of deep learning has led to state of the art papers utilizing the power of CNN's. \cite{Jaderberg14,Jaderberg14d,Gupta16,6460871}. For the purposes of our work, we have adopted a CNN model presented in \cite{Jaderberg14c} which has been explained in greater detail in the next section.
+The computer vision community has long been working on the problem of recognizing text in natural scenes \cite{1315187}. While varied approaches have been tried to these problems, the standard approach has been to split the problem in two parts - text detection and text recognition \cite{PosnerEtAl-IROS2010,Neumann:2011:TLR:2066306.2067476,Yang:2014:FIV:2583855.2583972,6751121,KaiWang:2011:EST:2355573.2356398,Weinman:2014:TIS:2574225.2574484,DBLP:journals/corr/AlsharifP13,6751207}. The advent of deep learning has led to state of the art papers utilizing the power of CNNs. \cite{Jaderberg14,Jaderberg14d,Gupta16,6460871}. For the purposes of our work, we have adopted a CNN model presented in \cite{Jaderberg14c} which has been explained in greater detail in the next section.
 
 
 
