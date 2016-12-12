@@ -29,7 +29,7 @@
 
 % Pages are numbered in submission mode, and unnumbered in camera-ready
 %\ifcvprfinal\pagestyle{empty}\fi
-\setcounter{page}{4321}
+\setcounter{page}{1}
 \begin{document}
 
 
@@ -194,20 +194,18 @@ We propose a method to isolate subnetworks by using activations. Similar to how 
 
 This method attempts to visualize the structure of the network rather than node specific operations as is typically done. The structure view provides and abstraction that is useful with discussing operations that are difficult to visualize. For example, it is difficult and uninformative to visualize transformations (rotation, scale, translation, etc). However understanding which parts of the network are active during different transformations can be informative. This information can be used for network pruning and other architecture optimizations. To do these network operations efficiently would require constructing the network differently. We leave this analysis to a future study.
 
-
-\begin{figure}
-\includegraphics[width=\columnwidth]{Figures/diff_examples/diff_examples-01.png}
-\caption{A set of generated difference maps. a) Comparing text with drop shadows to text without. We find that there are a few nodes that are effected more than the others. b) Comparing text without a rotation to text without. We note that the difference map is similar to a however the activations are not as strong. c) Comparing curved text with straight text. We note a sharp distinction between the earlier layers and the later layers. It appears that the earlier layers more strongly activated by the curved text where as the later nodes react strong towards the straight text. d) Comparing text that contain grayscale values to text that is all black. We note the gray scale text increases the activation throughout the network.}
-\label{fig:diffexamples}
-\end{figure}
-
-
 \section{Results}
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{Figures/deepvis/deepvis-conv2.png}
 \caption{Deep Visualization Toolbox - viewing activations}
 \label{fig:deepvis}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{Figures/diff_examples/diff_examples-01.png}
+\caption{A set of generated difference maps. a) Comparing text with drop shadows to text without. We find that there are a few nodes that are effected more than the others. b) Comparing text without a rotation to text without. We note that the difference map is similar to a however the activations are not as strong. c) Comparing curved text with straight text. We note a sharp distinction between the earlier layers and the later layers. It appears that the earlier layers more strongly activated by the curved text where as the later nodes react strong towards the straight text. d) Comparing text that contain grayscale values to text that is all black. We note the gray scale text increases the activation throughout the network.}
+\label{fig:diffexamples}
 \end{figure}
 
 \subsection{Standard Visualization Techniques}
@@ -229,6 +227,9 @@ Identifying sub-networks can prove to be extremely useful at different steps in 
 
 Top Activations:
 Having roughly identified two different subnetworks, one for the 't' class and one for the 'o' class, the top activations method seems promising. Further work includes attempting the method for all input classes, as well as developing a metric to judge the separability of the subnetworks that have been identified. In addition, the parameters N and M are specific to this model - a heuristic or a way to automatically select these parameters is a promising line of investigation.
+
+Activation Signatures:
+Different signatures for different transformations were observed. Further work include using these signatures to inform architecture choices. For example we note the layer dependence in the curved transformation. Network pruning may also be possible as we found specific filters that were activated strongly with the shadow and rotation transformations. Activation signatures provide a new anysis tool to help shed light on these increasingly complex networks. 
 
 %-------------------------------------------------------------------------
 
