@@ -200,8 +200,8 @@ This method attempts to visualize the structure of the network rather than node 
 \section{Results}
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{Figures/deepvis/deepvis-conv2.png}
-\caption{Deep Visualization Toolbox - viewing activations}
+\includegraphics[width=\columnwidth]{Figures/activation_vis/activation_vis-01.png}
+\caption{\textcolor{red}{Need reference and description}}
 \label{fig:deepvis}
 \end{figure}
 
@@ -217,8 +217,6 @@ To better understand the functioning of the text detector, we ported it over to 
 We found that we can trace the process of text recognition through the layers, breaking it down into high level tasks. Initial layers of the network roughly identified the horizontal and vertical edges in the words. As we move further, the word is no longer visible, but filter activations are localized in groups of high density. This was intriguing, and is one of the problems we will be following up in our future work. As we moved towards the end of the network, activations became more sparse and less localized. Activation maps contained 3-4 very high activations, and the rest were usually very low. This prompted us to use a metric other than maximum to compare different activation maps, and we moved to a frobenius norm as explained earlier. 
 
 Finally, towards the last layers, the activations were highly sparse, and most activations had been forced down to zero - most filters were dead/not contributing. This was expected, and motivated us to try and identify subnetworks that map to learning high level features in the input images. The next two sections show the results for these methods trying to identify useful substructures in the network.
-
-\ref{fig:deepvis}
 
 \subsection{Top Activations Method}
 \ref{fig:subvis} visualizes the top activations for the red 't' class and the blue 'o' class. Early layers show substantial overlap, but differentiation occurs in later layers. This corresponds to how the network identifies features from general to specific -- lower layers would detect simple features like edges and whitespace, which is required for all characters, whereas higher layers would specialize into shape finders, and ultimately letter categorizers. 
