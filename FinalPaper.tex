@@ -31,16 +31,21 @@
 Institution1\\
 Institution1 address\\
 {\tt\small firstauthor@i1.org}
+\and
+Second Author\\
+Institution2\\
+First line of institution2 address\\
+{\tt\small secondauthor@i2.org}
 % For a paper whose authors are all at the same institution,
 % omit the following lines up until the closing ``}''.
 % Additional authors and addresses can be added with ``\and'',
 % just like the second author.
 % To save space, use either the email address or home page, not both
 \and
-Second Author\\
-Institution2\\
-First line of institution2 address\\
-{\tt\small secondauthor@i2.org}
+Third Author\\
+Institution3\\
+First line of institution3 address\\
+{\tt\small thirdauthor@i3.org}
 }
 
 \maketitle
@@ -87,8 +92,12 @@ The computer vision community has been working on the problem of recognizing tex
 
 
 \section{Datasets and Model}
+
+\subsection{NIPS15 model}
+For demonstrating our visualization techniques we adapted and implemented the model presented by \cite{Jaderberg14c}, which is a character level text recognition model. This  model encodes for the character at every position of a word in the image and does not make any assumptions about the language or the lexicon from which the word is drawn. The  mode consists of a single CNN with multiple independent classifiers, each one predicting the character at each position in the word. Though the performance of this model is marginally lower than the state of the art lexicon constrained CNN models, this model suits our purpose the best as it's output is a pure CNN output, not optimized further by lexicon driven optimizations. 
+
 \subsection{DATASETS}
-Talk about MJSynth and Synthetic dataset we generated. 
+In our demonstrations and analysis, we have made use of two synthetically generated datasets of text images. The first one, the MJSynth dataset is from \cite{Jaderberg14c}. It is a database of images containing single words and has various synthetic transformations like font,color,projective transformations, border and shadow incorporated. This dataset was used for the benchmarking of the model after porting to Caffe to ensure that our model is working fine. 
 
 \subsection{Synthetic text generation pipeline} \label{sec:synthtext}
 Specialized datasets were necessary for the subnetwork identification visualization technique described in section \ref{sec:subnetwork}.
@@ -100,14 +109,10 @@ To generate these datasets a modified version of SynthText \cite{Gupta16} was us
 \label{fig:genText}
 \end{figure}
 
-\subsection{NIPS15 model}
-Describe charnet and oxford pipeline
+
 
 \subsection{Model Validation}
 Give numbers on model validation for MatConvnet and Caffe implementation.
-
-\subsection{Dropping Neurons}
-How we choose what and when to drop neurons
 
 \section{Visualization Pipelines}
 
@@ -116,8 +121,6 @@ How we choose what and when to drop neurons
 \subsection{Visualizing filter activations}
 
 \subsection{Network architecture invariants - Top Activations Method}
-
-\subsection{Location encoding in networks - Patch Method}
 
 \subsection{Activation Signature through difference maps} \label{sec:subnetwork}
 We propose a method to isolate subnetworks by using activations. Similar to how a neurologist would map the brain, we probe the network with different datasets and observe how the network reacts. Our method focuses on the amount of activation at each node. As an example assume we are interested in finding a subnetwork associacted with specific transformation. First two specialized synthetic datasets are generated as described in section \ref{sec:synthtext}. In this case one dataset does not have the transformation and the other does. The datasets are fed through the network and the activations are recorded and visualized. To visualize the activations, each filter output is \textcolor{red}{averaged}. Each of these resulting values are \textcolor{red}{averaged} over all of the test inputs. Finally the resulting values are mapped on a 2d plane as shown in Fig. \ref{fig:subvis}. \textcolor{red}{In practice we found that visualizing after RELU operations was beneficial as the dropped negative values provided little value.} Two maps are created, $V_0$ and $V_1$, for the dataset with and without the transformations. Comparisons between $V_0$ and $V_1$ can be used to get and idea of how the network reacts differently. With experimentation we found the following metric the most valuable for visualizations: \textcolor{red}{$$\frac{|V_0-V_1|}{V_0}$$}
