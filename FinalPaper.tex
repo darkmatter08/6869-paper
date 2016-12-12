@@ -126,6 +126,12 @@ Deep CNN's derive power from implementing chains of simple computations to mimic
 
 For a particular class of input images, the activations for all filters are recorded, and the frobenius norm for each map is calculated. Each node is given an ID and for each input image, top N nodes with the maximum norm are extracted per layer. We log these top nodes for all input iamges, and then report the M nodes most occur the most often across all input images belonging to one class. These M nodes then define the subnetwork which contributed the most to the specific input class. After trying different values for N and M, we found that best resolution and separation was found at N=10 nodes per layer, and M=15 nodes per subnetwork. The results elaborate on our selection critera in greater detail.
 
+\begin{figure}
+\includegraphics[width=\columnwidth]{Figures/max_activations/max_activations-01.png}
+\caption{\textcolor{red}{Add caption and reference in text}}
+\label{fig:activationgraph}
+\end{figure}
+
 \subsection{Activation Signature through difference maps} \label{sec:subnetwork}
 We propose a method to isolate subnetworks by using activations. Similar to how a neurologist would map the brain, we probe the network with different datasets and observe how the network reacts. Our method focuses on the amount of activation at each node. As an example assume we are interested in finding a subnetwork associacted with specific transformation. First two specialized synthetic datasets are generated as described in section \ref{sec:synthtext}. In this case one dataset does not have the transformation and the other does. The datasets are fed through the network and the activations are recorded and visualized. To visualize the activations, each filter output is \textcolor{red}{averaged}. Each of these resulting values are \textcolor{red}{averaged} over all of the test inputs. Finally the resulting values are mapped on a 2d plane as shown in Fig. \ref{fig:subvis}. \textcolor{red}{In practice we found that visualizing after RELU operations was beneficial as the dropped negative values provided little value.} Two maps are created, $V_0$ and $V_1$, for the dataset with and without the transformations. Comparisons between $V_0$ and $V_1$ can be used to get and idea of how the network reacts differently. With experimentation we found the following metric the most valuable for visualizations: \textcolor{red}{$$\frac{|V_0-V_1|}{V_0}$$}
 
