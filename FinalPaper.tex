@@ -37,15 +37,15 @@
 \title{Visualizing sub-networks in deep convolutional neural networks}
 
 
-\author{Spandan Madan\\
-Harvard University\\
-Cambridge, MA 02138\\
-{\tt\small smadan@mit.edu}
-\and
-Shantanu Jain\\
+\author{Shantanu Jain\\
 Massachusetts Institute of Technology\\
 Cambridge, MA 02139\\
 {\tt\small jains@mit.edu}
+\and
+Spandan Madan\\
+Harvard University\\
+Cambridge, MA 02138\\
+{\tt\small smadan@mit.edu}
 % For a paper whose authors are all at the same institution,
 % omit the following lines up until the closing ``}''.
 % Additional authors and addresses can be added with ``\and'',
@@ -240,18 +240,21 @@ Traditional per-unit visualization tools like the Deep Visualization Toolbox \ci
 
 
 %------------------------------------------------------------------------
-\subsection{Contributions}
-Our project can be roughly divided into 5 parts, and we started with an equitable distribution of work among the three of us. The five parts are: 
+\subsection{Individual Contributions}
+
+Shantanu Jain worked on:
+
 \begin{enumerate}
-\item Setting up models and porting them to make sure systems run
-\item Standard visualization techniques used in literature, Deep visualization toolbox
-\item Top Activations Method, Identifying subnetworks - the first proposed technique
-\item Synthetic text generation pipeline and Activations Signature Method to get Difference Maps - the second proposed technique
-\item Presentation and Paper
+
+\item Getting the Deep Visualization Toolbox to work on the text recognition model. This involved porting the model from MatConvNet to Caffe (collaborating with Spandan), installing the Deep Visualization Toolbox, and compiling and installing a custom version of Caffe. He also edited the Deep Visualization Toolbox source code to be compatible with input images of different dimentionality, including different linear sizes and grayscale (1 channel) inputs. 
+
+\item The proposal and the full implementation of the top activations visualization method.
+
+\item Discussing, proposing, and investigating other visualization methods that proved unfruitful. For example, the top weights method, a visualization method similar to the top activations method, but attempted to look at the network absent any inputs.
+
 \end{enumerate}
 
-Spandan Madan and Shantanu Jain worked together on Parts 1,2 and 3. Part 4 was done by Matthew Tancik, and all three worked together on Part 5. All work was discussed periodically by all three members to make sure we keep on track and we all guided each other in terms of understanding how things are working. All in all, it was a team effort.
-
+Matthew Tancik worked on the synthetic text generation pipelin and the Activations Signature Method to get Difference Maps - the second proposed technique. Spandan Madan worked on setting up and validating the original models. He collaborated with Shantanu Jain on porting the model to work on the Deep Visualization Toolbox. All collaboratted on the presentation, the paper. All members regularly met to share work, discuss, and give feedback. Overall, it was a team effort.
 
 {\small
 \bibliographystyle{ieee}
